@@ -28,3 +28,11 @@
         URL: task.example.com
       ansible.builtin.debug:
         msg: URL ={{URL}}
+
+- name: Variables from Inventory file
+  # inventory file host can be a group or 'all' for everything
+  hosts: all
+  tasks: # variable values must be filled in inventory file (/tmp/inv) and pass FILENAME in ansible command.
+    - name: Print play variables from inventory file
+      ansible.builtin.debug:
+        msg: URL ={{URL}}
