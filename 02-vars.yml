@@ -55,8 +55,9 @@
 
 # 1 - ANSBILE RUN TIME VARIABLE====== which means previous task result can be used next task variable.
 
-  # = From a Task output (register) 
+  # = From a Task output (register)
   # = Set a variable using task( set_fact)
+  # - Register - is to store and print output where as SET_FACT to store variable in use further down. 
 
 - name: Register a variable
   hosts: localhost
