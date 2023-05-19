@@ -73,9 +73,9 @@
     - name: Declara a variable to store json out
       ansible.builtin.set_fact:
       # uptime returns json which has rc attribute in it. hence out.rc brings out value
-        status:"{{out.rc}}"
+        status: "{{ out.rc }}"
 
     - name: print uptime out rc value
       ansible.builtin.debug:
       # above status stored out.rc value using set_fact command then using status to return stored value
-        msg: "{{status}}"
+        msg: "{{ status }}"
