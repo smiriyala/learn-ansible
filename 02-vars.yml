@@ -80,3 +80,10 @@
       ansible.builtin.debug:
       # above status stored out.rc value using set_fact command then using status to return stored value
         msg: "{{ status }}"
+
+
+## accessing ROLE level variable
+- name: Role Level Variable
+  hosts: localhost
+  roles:
+    - demo

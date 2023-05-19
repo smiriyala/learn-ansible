@@ -1,0 +1,3 @@
+- name: Print Role
+  ansible.Builtin.debug:
+    msg: "{{URL}}"
