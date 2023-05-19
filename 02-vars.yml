@@ -42,12 +42,7 @@
         msg: "{{URL}}"
 
 
-# 1 - ANSBILE RUN TIME VARIABLE====== which means previous task result can be used next task variable.
-
-  # = From a Task output (register) 
-  # = Set a variable using task( set_fact)
-
-#2 - ANSIBLE predefined variables
+#2 - ANSIBLE predefined variables called ---FACTs
 - name: Variables from predefined in ansible
   # inventory file host can be a group or 'all' for everything
   hosts: all
@@ -55,3 +50,32 @@
     - name: Print predefined variables
       ansible.builtin.debug:
         msg: "URL = {{URL}}, Hostname of server = {{ansible_hostname}}"
+
+
+
+# 1 - ANSBILE RUN TIME VARIABLE====== which means previous task result can be used next task variable.
+
+  # = From a Task output (register) 
+  # = Set a variable using task( set_fact)
+
+- name: Register a variable
+  hosts: localhost
+  tasks: # set output to OUT variable
+    - name: get uptime output
+      ansible.builtin.shell: uptime
+      register: out
+
+    - name: print out value
+      ansible.builtin.debug:
+      #now printing out variable
+        msg: "{{out}}"
+    
+    - name: Declara a variable to store json out
+      ansible.builtin.set_fact:
+      # uptime returns json which has rc attribute in it. hence out.rc brings out value
+        status:"{{out.rc}}"
+
+    - name: print uptime out rc value
+      ansible.builtin.debug:
+      # above status stored out.rc value using set_fact command then using status to return stored value
+        msg: "{{status}}"
