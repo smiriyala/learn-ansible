@@ -1,3 +1,7 @@
+##Variable precedence: 
+    #cmd level >> Task Level >>Variable from File>>Play Level Varaible >>Inventory variable.
+
+
 - name: Play Varaibles
   hosts: localhost
   vars:
@@ -35,4 +39,19 @@
   tasks: # variable values must be filled in inventory file (/tmp/inv) and pass FILENAME in ansible command.
     - name: Print play variables from inventory file
       ansible.builtin.debug:
-        msg: URL ={{URL}}
+        msg: "{{URL}}"
+
+
+# 1 - ANSBILE RUN TIME VARIABLE====== which means previous task result can be used next task variable.
+
+  # = From a Task output (register) 
+  # = Set a variable using task( set_fact)
+
+#2 - ANSIBLE predefined variables
+- name: Variables from predefined in ansible
+  # inventory file host can be a group or 'all' for everything
+  hosts: all
+  tasks: # variable values must be filled in inventory file (/tmp/inv) and pass FILENAME in ansible command.
+    - name: Print predefined variables
+      ansible.builtin.debug:
+        msg: "URL = {{URL}}, Hostname of server = {{ansible_hostname}}"
