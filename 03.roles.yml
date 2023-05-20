@@ -1,0 +1,6 @@
+
+## accessing ROLE level variable
+- name: Role Level Variable
+  hosts: localhost
+  roles:
+    - demo
