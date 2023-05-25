@@ -5,4 +5,4 @@
   ## we are trying get value out of AWS
     - name: print Test1 variable
       ansible.builtin.debug:
-        msg: "{{ lookup('amazon.aws.asw_ssm', 'test1', region='us-east-1') }}"
+        msg: "{{ lookup('aws_ssm', 'test1', region='us-east-1') }}"
