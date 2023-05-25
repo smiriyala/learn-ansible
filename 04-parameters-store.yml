@@ -1,5 +1,5 @@
 - name: Load Parameters from AWS
-  host: localhost
+  hosts: localhost
   tasks:
   ## below 'test1' is the parameter name we crated using terrform parameters mechanism and now 
   ## we are trying get value out of AWS
