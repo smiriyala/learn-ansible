@@ -1,0 +1,8 @@
+- name: Load Parameters from AWS
+  host: localhost
+  tasks:
+  ## below 'test1' is the parameter name we crated using terrform parameters mechanism and now 
+  ## we are trying get value out of AWS
+    - name: print Test1 variable
+      ansible.builtin.debug:
+        msg: "{{ lookup('amazon.aws.asw_ssm', 'test1', region='us-east-1') }}"
