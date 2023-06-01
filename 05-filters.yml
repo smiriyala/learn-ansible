@@ -5,4 +5,4 @@
   tasks:
     - name: string filters 
       debug:
-        msg: "{{ URL | splitext | last -1 }}"
+        msg: "{{ URL | regex_replace('.tar.gz')|splitext | last }}"
