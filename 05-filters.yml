@@ -5,4 +5,4 @@
   tasks:
     - name: string filters 
       debug:
-        msg: "{{ URL | split | last }}"
+        msg: "{{ URL | splittext | last }}"
